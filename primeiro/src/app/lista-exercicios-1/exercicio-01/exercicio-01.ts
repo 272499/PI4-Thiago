@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './exercicio-01.scss',
 })
 export class Exercicio01 {
+  
   nome = 'Carlos';
   idade = 25;
   curso = 'Sistemas de Informação';
