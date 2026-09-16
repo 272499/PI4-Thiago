@@ -1,0 +1,26 @@
+<label>Nome do aluno:</label>
+<input type="text" [(ngModel)]="nome">
+
+<br><br>
+
+<p>Aluno: {{ nome }}</p>
+
+<p>
+  Quantidade de disciplinas: {{ quantidadeDisciplinas }}
+
+  <button
+    (click)="diminuir()"
+    [disabled]="quantidadeDisciplinas === 1">
+    -
+  </button>
+
+  <button (click)="aumentar()">+</button>
+</p>
+
+<button
+  (click)="matricular()"
+  [disabled]="nome.trim() === ''">
+  Realizar Matrícula
+</button>
+
+<p>{{ mensagem }}</p>
