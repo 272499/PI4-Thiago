@@ -1,0 +1,16 @@
+<h2>{{ produto }}</h2>
+
+<p>Quantidade em estoque: {{ estoque }}</p>
+
+<button
+  (click)="diminuir()"
+  [disabled]="estoque === 0">
+  -
+</button>
+
+<button (click)="aumentar()">+</button>
+
+<br><br>
+
+<label>Nome do produto:</label>
+<input type="text" [(ngModel)]="produto">
