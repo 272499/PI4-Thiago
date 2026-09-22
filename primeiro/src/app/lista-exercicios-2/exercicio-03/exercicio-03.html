@@ -1,0 +1,12 @@
+<h2>Idade: {{ idade }}</h2>
+
+<button (click)="diminuir()" [disabled]="idade === 0">-</button>
+<button (click)="aumentar()">+</button>
+
+<p *ngIf="idade < 12">Criança</p>
+
+<p *ngIf="idade >= 12 && idade <= 17">Adolescente</p>
+
+<p *ngIf="idade >= 18 && idade <= 59">Adulto</p>
+
+<p *ngIf="idade >= 60">Idoso</p>
