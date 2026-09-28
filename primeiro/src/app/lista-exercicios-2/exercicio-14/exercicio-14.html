@@ -1,0 +1,75 @@
+<h1>Conversão para a sintaxe moderna</h1>
+
+<hr>
+
+<h2>Exercício 2 - Situação do usuário</h2>
+
+@if (usuarioLogado) {
+  <p>Usuário autenticado</p>
+} @else {
+  <p>Acesso não autorizado</p>
+}
+
+<button (click)="alternarLogin()">
+  {{ usuarioLogado ? 'Sair' : 'Entrar' }}
+</button>
+
+<hr>
+
+<h2>Exercício 8 - Lista de produtos</h2>
+
+@for (produto of produtos; track produto.id) {
+
+  <p>Produto: {{ produto.nome }}</p>
+  <p>Preço: {{ produto.preco | currency:'BRL' }}</p>
+  <p>Quantidade: {{ produto.quantidade }}</p>
+  <p>
+    Total:
+    {{ produto.preco * produto.quantidade | currency:'BRL' }}
+  </p>
+
+  <hr>
+
+} @empty {
+
+  <p>Nenhum produto cadastrado.</p>
+
+}
+
+<h2>Exercício 13 - Lista de tarefas</h2>
+
+@for (tarefa of tarefas; track tarefa.id) {
+
+  <p>{{ tarefa.titulo }}</p>
+
+  @if (tarefa.concluida) {
+    <p>Concluída</p>
+  } @else {
+    <p>Pendente</p>
+  }
+
+  <button (click)="alterarSituacao(tarefa)">
+    Alterar situação
+  </button>
+
+  <hr>
+
+} @empty {
+
+  <p>Nenhuma tarefa cadastrada.</p>
+
+}
+
+<h2>Diferenças percebidas</h2>
+
+<ul>
+  <li>
+    A sintaxe moderna usa &#64;if e &#64;else diretamente no template,
+    sem precisar de *ngIf e ng-template.
+  </li>
+
+  <li>
+    O &#64;for permite usar track diretamente e também possui &#64;empty
+    para tratar listas vazias.
+  </li>
+</ul>
