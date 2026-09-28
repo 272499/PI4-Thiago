@@ -1,0 +1,54 @@
+<h1>Painel de projetos</h1>
+
+<p>Total de projetos: {{ projetos.length }}</p>
+<p>Projetos concluídos: {{ totalConcluidos() }}</p>
+
+<button (click)="alternarConcluidos()">
+  {{ mostrarConcluidos ? 'Ocultar concluídos' : 'Mostrar concluídos' }}
+</button>
+
+<hr>
+
+@for (projeto of projetos; track projeto.id; let i = $index) {
+
+  @if (mostrarConcluidos || projeto.status !== 'concluído') {
+
+    <div
+      [ngClass]="{
+        'planejamento': projeto.status === 'planejamento',
+        'desenvolvimento': projeto.status === 'desenvolvimento',
+        'testes': projeto.status === 'testes',
+        'concluido': projeto.status === 'concluído',
+        'nota-alta': projeto.nota !== null && projeto.nota >= 7,
+        'nota-baixa': projeto.nota !== null && projeto.nota < 6
+      }"
+    >
+
+      <h2>{{ i + 1 }} - {{ projeto.titulo }}</h2>
+
+      <p>Equipe: {{ projeto.equipe }}</p>
+
+      @if (projeto.nota !== null) {
+        <p>Nota: {{ projeto.nota }}</p>
+      } @else {
+        <p>Nota ainda não definida</p>
+      }
+
+      <p>Status: {{ projeto.status }}</p>
+
+      @if (projeto.entregue) {
+        <p>Projeto entregue</p>
+      }
+
+      <button (click)="alterarStatus(projeto)">
+        Alterar status
+      </button>
+
+      <hr>
+
+    </div>
+  }
+
+} @empty {
+  <p>Nenhum projeto cadastrado.</p>
+}
