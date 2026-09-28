@@ -1,0 +1,21 @@
+<h2>Produtos</h2>
+
+<button (click)="alternarExibicao()">
+  {{ somenteDisponiveis ? 'Mostrar todos' : 'Mostrar somente disponíveis' }}
+</button>
+
+<hr>
+
+<ng-container *ngFor="let produto of produtos">
+
+  <ng-container *ngIf="!somenteDisponiveis || produto.quantidade > 0">
+
+    <p>Produto: {{ produto.nome }}</p>
+    <p>Preço: {{ produto.preco | currency:'BRL' }}</p>
+    <p>Quantidade: {{ produto.quantidade }}</p>
+
+    <hr>
+
+  </ng-container>
+
+</ng-container>
